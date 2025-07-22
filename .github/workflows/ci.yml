@@ -1,0 +1,25 @@
+name: Scan for .exe files on main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  scan-exe:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Scan repo for .exe files
+        run: |
+          echo "Scanning repo for .exe files..."
+          EXE_FILES=$(git ls-files '*.exe')
+          if [ -n "$EXE_FILES" ]; then
+            echo "Error: Found .exe files in the main branch:"
+            echo "$EXE_FILES"
+            exit 1
+          else
+            echo "No .exe files found in the main branch."
+          fi
