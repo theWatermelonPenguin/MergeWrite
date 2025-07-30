@@ -36,7 +36,13 @@ export default function TextEditor({ initialContent }: TextEditorProps) {
     <div className="p-4 h-full flex flex-col gap-4">
       {/* Toolbar */}
       <div className="flex items-center gap-4">
-
+        <button
+          onClick={() => (window.location.href = '/')}
+          className="flex items-center gap-2 px-3 py-1 bg-gray-300 rounded"
+        >
+          <img src="/go-back.svg" alt="Back" className="w-6 h-6 -scale-x-100" />
+          Go Back
+        </button>
         <button
           onClick={undo}
           disabled={!canUndo}
