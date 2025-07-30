@@ -16,7 +16,6 @@ export default function TextEditor({ initialContent }: TextEditorProps) {
     reset,
   } = useUndoRedo(initialContent);
 
-  // If initialContent changes externally, reset the history
   useEffect(() => {
     reset(initialContent);
   }, [initialContent, reset]);
@@ -34,18 +33,37 @@ export default function TextEditor({ initialContent }: TextEditorProps) {
   };
 
   return (
-    <div className="p-4 h-full flex flex-col gap-2">
-      <div className="flex gap-2">
-        <button onClick={undo} disabled={!canUndo} className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50">
+    <div className="p-4 h-full flex flex-col gap-4">
+      {/* Toolbar */}
+      <div className="flex items-center gap-4">
+
+        <button
+          onClick={undo}
+          disabled={!canUndo}
+          className="flex items-center gap-2 px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+        >
+          <img src="/undo.svg" alt="Undo" className="w-5 h-5" />
           Undo
         </button>
-        <button onClick={redo} disabled={!canRedo} className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50">
+
+        <button
+          onClick={redo}
+          disabled={!canRedo}
+          className="flex items-center gap-2 px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+        >
+          <img src="/redo.svg" alt="Redo" className="w-5 h-5" />
           Redo
         </button>
-        <button onClick={handleSave} className="ml-auto px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+
+        <button
+          onClick={handleSave}
+          className="ml-auto px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
           Save Document
         </button>
       </div>
+
+      {/* Textarea */}
       <textarea
         className="flex-grow p-4 border border-gray-300 rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={currentValue}

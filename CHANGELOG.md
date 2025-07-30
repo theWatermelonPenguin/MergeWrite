@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- Updated UI layout on text editor page for better usability and flow
+- Added undo/redo images to enhance visual appeal on text editor page
 
 ---
 
