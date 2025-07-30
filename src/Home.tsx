@@ -1,5 +1,5 @@
 import { useRef, useState, type ChangeEvent } from 'react';
-import logo from './../public/favicon.ico'
+import logo from '/favicon.svg'
 
 interface HomePageProps {
   onNew: () => void;
@@ -30,7 +30,7 @@ export default function HomePage({ onNew, onOpen }: HomePageProps) {
   return (
     <div style={{ padding: 20 }}>
       <h1>MergeWrite</h1>
-      <img src={logo} className="mx-auto"/>
+      <img src={logo} className="mx-auto w-50 h-50"/>
       <button onClick={onNew}>New Document</button>
       <br /><br />
       <button onClick={openFileDialog}>Open Document</button>
